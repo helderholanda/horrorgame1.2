@@ -64,9 +64,9 @@ p {
 
 .question-container {
     display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-start;
+    flex-direction:row; /* Agora horizontal, pergunta + barra */
+    align-items:flex-start;
+    justify-content:center;
     width:90%;
     max-width:600px;
     margin:20px 0;
@@ -95,16 +95,16 @@ p {
     text-align:center;
 }
 
-/* ===== Barra de tempo agora dentro do quiz ===== */
+/* ===== Barra de tempo lateral e preenchimento de baixo para cima ===== */
 #timerContainer {
-    width:30px;
+    width:25px;
     height:150px;
     border:2px solid red;
     border-radius:10px;
     overflow:hidden;
     display:flex;
-    flex-direction:column-reverse;
-    margin:10px auto;
+    flex-direction:column-reverse; /* faz o preenchimento de baixo para cima */
+    margin-left:10px; /* separação lateral da pergunta */
     background: rgba(50,0,0,0.3);
     box-shadow: inset 0 0 10px rgba(255,0,0,0.5);
 }
@@ -123,13 +123,18 @@ p {
     h1 {font-size:5vw;}
     .btn {font-size:1em; padding:10px 15px;}
     .gif-container {margin:15px 0;}
-    #timerContainer {width:25px; height:120px;}
+    #timerContainer {width:20px; height:120px; margin-left:8px;}
 }
 
 @media(max-width:500px){
     h1 {font-size:6vw; margin:15px 0 5px;}
     p {font-size:1em; margin:8px 10px;}
     .btn {font-size:0.9em; padding:8px 12px;}
-    .question-container {width:95%; margin-top:15px;}
-    #timerContainer {width:20px; height:100px; margin:8px auto;}
+    .question-container {
+        flex-direction:row; /* ainda horizontal no celular */
+        width:95%;
+        margin-top:15px;
+        align-items:flex-start;
+    }
+    #timerContainer {width:15px; height:100px; margin-left:6px;}
 }
