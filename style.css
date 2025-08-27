@@ -13,7 +13,7 @@ body {
 }
 
 h1 {
-    font-size:2.5vw; /* tamanho responsivo */
+    font-size:2.5vw;
     margin:20px 0 10px;
     color:red;
     text-shadow:2px 2px 0 #8B0000,4px 4px 5px rgba(255,0,0,0.7);
@@ -66,11 +66,12 @@ p {
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:center;
+    justify-content:flex-start;
     width:90%;
     max-width:600px;
     margin:20px 0;
     position:relative;
+    box-sizing:border-box;
 }
 
 #options {
@@ -94,16 +95,16 @@ p {
     text-align:center;
 }
 
+/* ===== Barra de tempo agora dentro do quiz ===== */
 #timerContainer {
-    width:25px;
-    height:200px;
+    width:30px;
+    height:150px;
     border:2px solid red;
-    position:absolute;
-    right:-35px;
-    top:10px;
     border-radius:10px;
     overflow:hidden;
-    display:none;
+    display:flex;
+    flex-direction:column-reverse;
+    margin:10px auto;
     background: rgba(50,0,0,0.3);
     box-shadow: inset 0 0 10px rgba(255,0,0,0.5);
 }
@@ -111,8 +112,6 @@ p {
 #timerFill {
     width:100%;
     height:0%;
-    position:absolute;
-    bottom:0;
     background: linear-gradient(to top, #ff0000 0%, #8B0000 100%);
     border-radius:5px;
     box-shadow: inset 0 0 10px rgba(255,0,0,0.5);
@@ -124,7 +123,7 @@ p {
     h1 {font-size:5vw;}
     .btn {font-size:1em; padding:10px 15px;}
     .gif-container {margin:15px 0;}
-    #timerContainer {right:-25px; height:150px; width:20px;}
+    #timerContainer {width:25px; height:120px;}
 }
 
 @media(max-width:500px){
@@ -132,5 +131,5 @@ p {
     p {font-size:1em; margin:8px 10px;}
     .btn {font-size:0.9em; padding:8px 12px;}
     .question-container {width:95%; margin-top:15px;}
-    #timerContainer {right:-15px; height:120px; width:15px;}
+    #timerContainer {width:20px; height:100px; margin:8px auto;}
 }
