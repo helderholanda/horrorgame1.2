@@ -63,7 +63,6 @@ let round = 1;
 let roundWins = 0;
 let unusedQuestions = [];
 let questionDeck = [];
-let timerInterval = null;
 const totalRounds = 3;
 const roundTarget = 6;
 
@@ -76,15 +75,19 @@ const totalQuestionsP = document.getElementById("totalQuestions");
 const optionsDiv = document.getElementById("options");
 const questionGif = document.getElementById("questionGif");
 const roundCounter = document.getElementById("roundCounter");
-const timerContainer = document.getElementById("timerContainer");
-const timerFill = document.getElementById("timerFill");
 const soundStart = document.getElementById("soundStart");
 const soundClick = document.getElementById("soundClick");
 const soundLaugh = document.getElementById("soundLaugh");
 const bgMusic = document.getElementById("bgMusic");
 
 // ======== FUNÇÕES ========
-function shuffleArray(array){for(let i=array.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[array[i],array[j]]=[array[j],array[i]];}return array;}
+function shuffleArray(array){
+    for(let i=array.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [array[i],array[j]]=[array[j],array[i]];
+    }
+    return array;
+}
 
 function createShuffledDeck(){
     if(unusedQuestions.length<10){unusedQuestions = shuffleArray([...questions]);}
@@ -94,23 +97,7 @@ function createShuffledDeck(){
 
 function updateRoundCounter(){ roundCounter.textContent = `Rodada ${round} de ${totalRounds}`; }
 
-function startTimer(){
-    timerContainer.style.display = "block";
-    let time = 0;
-    timerFill.style.height = '0%';
-    timerInterval = setInterval(()=>{
-        time++;
-        timerFill.style.height = `${(time/20)*100}%`;
-        if(time>=20){
-            clearInterval(timerInterval);
-            currentQuestion++;
-            showQuestion();
-        }
-    },1000);
-}
-
 function showQuestion(){
-    clearInterval(timerInterval);
     if(currentQuestion>=questionDeck.length){ showRoundResult(); return; }
     const q = questionDeck[currentQuestion];
     questionText.textContent = q.text;
@@ -129,19 +116,15 @@ function showQuestion(){
         optionsDiv.appendChild(btn);
     });
     questionGif.src = gifs[currentQuestion%gifs.length];
-    startTimer();
 }
 
 function checkAnswer(selected){
-    clearInterval(timerInterval);
     if(selected===questionDeck[currentQuestion].correct) score++;
     currentQuestion++;
     showQuestion();
 }
 
 function showRoundResult(){
-    clearInterval(timerInterval);
-    timerContainer.style.display = "none";
     optionsDiv.innerHTML = "";
     soundLaugh.play();
     const roundWon = score >= roundTarget;
