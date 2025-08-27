@@ -64,7 +64,7 @@ p {
 
 .question-container {
     display:flex;
-    flex-direction:row; /* Agora horizontal, pergunta + barra */
+    flex-direction:row; /* Perguntas + barra lateral */
     align-items:flex-start;
     justify-content:center;
     width:90%;
@@ -77,8 +77,8 @@ p {
 #options {
     display:flex;
     flex-direction:column;
-    align-items:center;
-    width:100%;
+    align-items:flex-start; /* alinhado à esquerda */
+    width:calc(100% - 40px); /* espaço para a barra lateral */
 }
 
 #roundCounter {
@@ -104,7 +104,7 @@ p {
     overflow:hidden;
     display:flex;
     flex-direction:column-reverse; /* faz o preenchimento de baixo para cima */
-    margin-left:10px; /* separação lateral da pergunta */
+    margin-left:10px;
     background: rgba(50,0,0,0.3);
     box-shadow: inset 0 0 10px rgba(255,0,0,0.5);
 }
@@ -118,6 +118,7 @@ p {
     transition: height 1s linear;
 }
 
+/* ===== Responsivo ===== */
 @media(max-width:800px){
     body {justify-content:flex-start;}
     h1 {font-size:5vw;}
@@ -131,10 +132,19 @@ p {
     p {font-size:1em; margin:8px 10px;}
     .btn {font-size:0.9em; padding:8px 12px;}
     .question-container {
-        flex-direction:row; /* ainda horizontal no celular */
+        flex-direction:column; /* empilha no celular */
         width:95%;
         margin-top:15px;
-        align-items:flex-start;
+        align-items:center;
     }
-    #timerContainer {width:15px; height:100px; margin-left:6px;}
+    #options {
+        width:100%;
+        align-items:center; /* centraliza no celular */
+    }
+    #timerContainer {
+        width:20px;
+        height:100px;
+        margin:10px 0 0 0; /* barra abaixo das opções no celular */
+    }
+    .gif-container {margin-top:15px;}
 }
