@@ -194,13 +194,10 @@ function restartGame(){
 }
 
 // ======== INÍCIO ========
-window.addEventListener("load", ()=>{
-    bgMusic.volume = 1.0;
-    bgMusic.play().catch(()=>{console.log("Clique no botão para iniciar a música de fundo.");});
-});
-
 startBtn.addEventListener("click", ()=>{
     soundStart.play();
+    bgMusic.volume = 1.0;
+    bgMusic.play().catch(()=>{console.log("Erro ao tocar a música de fundo.");});
     startBtn.style.display="none"; startGif.style.display="none";
     quizContainer.style.display="flex";
     unusedQuestions = shuffleArray([...questions]);
