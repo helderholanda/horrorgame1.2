@@ -63,10 +63,10 @@ p {
     box-shadow:0 0 20px rgba(255,0,0,0.7);
 }
 
-/* Pergunta + opções + barra lateral */
+/* Pergunta + opções */
 .question-container {
     display:flex;
-    flex-direction:row; /* opções + barra de tempo lado a lado */
+    flex-direction:column; /* opções empilhadas */
     align-items:flex-start;
     justify-content:flex-start;
     width:90%;
@@ -75,20 +75,12 @@ p {
     box-sizing:border-box;
 }
 
-/* Wrapper para alinhar opções + barra corretamente */
-.options-wrapper {
-    display:flex;
-    flex-direction:row; /* opções à esquerda, barra à direita */
-    width:100%;
-    align-items:flex-start;
-}
-
-/* Opções alinhadas à esquerda, ocupando a maior parte */
+/* Opções alinhadas à esquerda */
 #options {
     display:flex;
     flex-direction:column;
     align-items:flex-start;
-    width:calc(100% - 40px); /* espaço para a barra */
+    width:100%;
 }
 
 /* Contadores */
@@ -106,36 +98,12 @@ p {
     text-align:center;
 }
 
-/* Barra lateral preenchimento de baixo para cima */
-#timerContainer {
-    width:25px;
-    height:150px;
-    border:2px solid red;
-    border-radius:10px;
-    overflow:hidden;
-    display:flex;
-    flex-direction:column-reverse; /* baixo para cima */
-    margin-left:10px;
-    background: rgba(50,0,0,0.3);
-    box-shadow: inset 0 0 10px rgba(255,0,0,0.5);
-}
-
-#timerFill {
-    width:100%;
-    height:0%;
-    background: linear-gradient(to top, #ff0000 0%, #8B0000 100%);
-    border-radius:5px;
-    box-shadow: inset 0 0 10px rgba(255,0,0,0.5);
-    transition: height 1s linear;
-}
-
 /* Responsivo */
 @media(max-width:800px){
     body {justify-content:flex-start;}
     h1 {font-size:5vw;}
     .btn {font-size:1em; padding:10px 15px;}
     .gif-container {margin:15px 0;}
-    #timerContainer {width:20px; height:120px; margin-left:8px;}
 }
 
 @media(max-width:500px){
@@ -143,24 +111,13 @@ p {
     p {font-size:1em; margin:8px 10px;}
     .btn {font-size:0.9em; padding:8px 12px;}
     .question-container {
-        flex-direction:column; /* empilha no celular */
         width:95%;
         margin-top:15px;
-        align-items:center;
-    }
-    .options-wrapper {
-        flex-direction:column; /* barra abaixo das opções */
-        width:100%;
         align-items:center;
     }
     #options {
         width:100%;
         align-items:center;
-    }
-    #timerContainer {
-        width:20px;
-        height:100px;
-        margin:10px 0 0 0; /* barra abaixo das opções */
     }
     .gif-container {margin-top:15px;}
 }
