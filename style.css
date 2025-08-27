@@ -49,6 +49,7 @@ p {
     transform:scale(1.05);
 }
 
+/* GIF sempre abaixo das opções */
 .gif-container {
     margin:20px 0;
     text-align:center;
@@ -62,25 +63,35 @@ p {
     box-shadow:0 0 20px rgba(255,0,0,0.7);
 }
 
+/* Pergunta + opções + barra lateral */
 .question-container {
     display:flex;
-    flex-direction:row; /* Perguntas + barra lateral */
+    flex-direction:row; /* opções + barra de tempo lado a lado */
     align-items:flex-start;
-    justify-content:center;
+    justify-content:flex-start;
     width:90%;
     max-width:600px;
     margin:20px 0;
-    position:relative;
     box-sizing:border-box;
 }
 
+/* Wrapper para alinhar opções + barra corretamente */
+.options-wrapper {
+    display:flex;
+    flex-direction:row; /* opções à esquerda, barra à direita */
+    width:100%;
+    align-items:flex-start;
+}
+
+/* Opções alinhadas à esquerda, ocupando a maior parte */
 #options {
     display:flex;
     flex-direction:column;
-    align-items:flex-start; /* alinhado à esquerda */
-    width:calc(100% - 40px); /* espaço para a barra lateral */
+    align-items:flex-start;
+    width:calc(100% - 40px); /* espaço para a barra */
 }
 
+/* Contadores */
 #roundCounter {
     font-size:1.5em;
     margin:10px;
@@ -95,7 +106,7 @@ p {
     text-align:center;
 }
 
-/* ===== Barra de tempo lateral e preenchimento de baixo para cima ===== */
+/* Barra lateral preenchimento de baixo para cima */
 #timerContainer {
     width:25px;
     height:150px;
@@ -103,7 +114,7 @@ p {
     border-radius:10px;
     overflow:hidden;
     display:flex;
-    flex-direction:column-reverse; /* faz o preenchimento de baixo para cima */
+    flex-direction:column-reverse; /* baixo para cima */
     margin-left:10px;
     background: rgba(50,0,0,0.3);
     box-shadow: inset 0 0 10px rgba(255,0,0,0.5);
@@ -118,7 +129,7 @@ p {
     transition: height 1s linear;
 }
 
-/* ===== Responsivo ===== */
+/* Responsivo */
 @media(max-width:800px){
     body {justify-content:flex-start;}
     h1 {font-size:5vw;}
@@ -137,14 +148,19 @@ p {
         margin-top:15px;
         align-items:center;
     }
+    .options-wrapper {
+        flex-direction:column; /* barra abaixo das opções */
+        width:100%;
+        align-items:center;
+    }
     #options {
         width:100%;
-        align-items:center; /* centraliza no celular */
+        align-items:center;
     }
     #timerContainer {
         width:20px;
         height:100px;
-        margin:10px 0 0 0; /* barra abaixo das opções no celular */
+        margin:10px 0 0 0; /* barra abaixo das opções */
     }
     .gif-container {margin-top:15px;}
 }
